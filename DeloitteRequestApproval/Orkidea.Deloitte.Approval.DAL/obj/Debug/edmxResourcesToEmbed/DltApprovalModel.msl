@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dltApprovalModelStoreContainer" CdmEntityContainer="dltApprovalEntities">
+    <EntitySetMapping Name="DistributionList">
+      <EntityTypeMapping TypeName="dltApprovalModel.DistributionList">
+        <MappingFragment StoreEntitySet="DistributionList">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApprovalRequest">
+      <EntityTypeMapping TypeName="dltApprovalModel.ApprovalRequest">
+        <MappingFragment StoreEntitySet="ApprovalRequest">
+          <ScalarProperty Name="comments" ColumnName="comments" />
+          <ScalarProperty Name="approvalUser" ColumnName="approvalUser" />
+          <ScalarProperty Name="dateApproval" ColumnName="dateApproval" />
+          <ScalarProperty Name="approved" ColumnName="approved" />
+          <ScalarProperty Name="request" ColumnName="request" />
+          <ScalarProperty Name="idDistributionList" ColumnName="idDistributionList" />
+          <ScalarProperty Name="requestUser" ColumnName="requestUser" />
+          <ScalarProperty Name="dateRequest" ColumnName="dateRequest" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WebUser">
+      <EntityTypeMapping TypeName="dltApprovalModel.WebUser">
+        <MappingFragment StoreEntitySet="WebUser">
+          <ScalarProperty Name="idPais" ColumnName="idPais" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwRequestReport">
+      <EntityTypeMapping TypeName="dltApprovalModel.vwRequestReport">
+        <MappingFragment StoreEntitySet="vwRequestReport">
+          <ScalarProperty Name="idPais" ColumnName="idPais" />
+          <ScalarProperty Name="comments" ColumnName="comments" />
+          <ScalarProperty Name="approvalUser" ColumnName="approvalUser" />
+          <ScalarProperty Name="dateApproval" ColumnName="dateApproval" />
+          <ScalarProperty Name="approved" ColumnName="approved" />
+          <ScalarProperty Name="request" ColumnName="request" />
+          <ScalarProperty Name="distributionListName" ColumnName="distributionListName" />
+          <ScalarProperty Name="idDistributionList" ColumnName="idDistributionList" />
+          <ScalarProperty Name="requestUser" ColumnName="requestUser" />
+          <ScalarProperty Name="dateRequest" ColumnName="dateRequest" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

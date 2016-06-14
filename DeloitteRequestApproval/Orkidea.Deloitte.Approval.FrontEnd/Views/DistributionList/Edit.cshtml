@@ -1,0 +1,42 @@
+﻿@model Orkidea.Deloitte.Approval.Entities.DistributionList
+
+@{
+    ViewBag.Title = "Editar listas de distribución";
+}
+
+<div class="ork-Content">
+    @using (Html.BeginForm("edit", "DistributionList", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <h2>Editar lista de distribucion</h2>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.name, "Nombre", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.name, new { @class = "form-control required" })
+                    @Html.ValidationMessageFor(m => m.name, "Requerido", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.email, "e-mail", new { @class = "control-label" }) <small>ingrese direcciones separadas por coma</small>
+                    @Html.TextAreaFor(m => m.email, new { @class = "form-control required" })
+                    @Html.ValidationMessageFor(m => m.email, "Requerido", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type='submit' id='upload-files' value=' Siguiente ' class="btn btn-info" />
+                    | @Html.ActionLink("Volver a la lista", "Index", "DistributionList")
+                </div>
+            </div>
+        </div>
+    }
+</div>

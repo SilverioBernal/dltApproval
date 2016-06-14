@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Orkidea.Deloitte.Approval.FrontEnd.Models.vmApprovalRequest>
+@{
+    ViewBag.Title = "Solicitudes pendientes";
+    Layout = null;
+}
+
+<script src="~/Scripts/Custom/ApprovalIndex.js"></script>
+
+<div class="ork-Content">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Mis solicitudes pendientes</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @Html.ActionLink("Crear nueva", "Create", null, new { @class = "btn btn-info" }) | @Html.ActionLink("Volver al home", "Index", "Home")
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <table id="approval" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Solicitado</th>
+                        <th>Asignado</th>
+                        <th>Requerimiento</th>
+                        <th>Estado</th>
+                        <th>Respondido</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.dateRequest.ToString("yyyy-MM-dd")</td>
+                            <td>@item.distributionListName</td>
+                            <td>@item.request</td>
+                            <td>@item.approvalStatus</td>
+                            <td>@item.dateApprovalString</td>
+                            <td>
+                                @if (item.dateApprovalString == "")
+                                {
+                                    <a href="@Url.Action("Remove", new { id = item.cipherId })" title="Eliminar"><i class="fa fa-trash"></i></a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

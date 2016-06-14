@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{16E998F6-2A93-497F-8D1E-9AFB525CAB25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataManagement", "DataManagement", "{81504DF4-2DC1-4212-A5CC-F4BB73C6CDE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebFront", "WebFront", "{74ABD0D6-918C-4AFF-B012-F3E2999F303F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orkidea.Deloitte.Approval.Business", "Orkidea.Deloitte.Approval.Business\Orkidea.Deloitte.Approval.Business.csproj", "{0B1B2AAC-280D-443C-ADAD-34486AC9B85E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orkidea.Deloitte.Approval.DAL", "Orkidea.Deloitte.Approval.DAL\Orkidea.Deloitte.Approval.DAL.csproj", "{ACC94444-4FCE-44F1-9C99-319DCA836850}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orkidea.Deloitte.Approval.Entities", "Orkidea.Deloitte.Approval.Entities\Orkidea.Deloitte.Approval.Entities.csproj", "{93FF4566-E47F-432C-AE2D-74118233F46E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orkidea.Deloitte.Approval.FrontEnd", "Orkidea.Deloitte.Approval.FrontEnd\Orkidea.Deloitte.Approval.FrontEnd.csproj", "{4AFB2240-8823-4AF4-BB70-64419DA9DF7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NotificationExe", "NotificationExe", "{860AEA01-D714-45C0-B074-293F27632E63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatchNotification", "BatchNotification\BatchNotification.csproj", "{0D4B563D-1E50-4FD9-9A4C-4B2A414BB557}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B1B2AAC-280D-443C-ADAD-34486AC9B85E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B1B2AAC-280D-443C-ADAD-34486AC9B85E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B1B2AAC-280D-443C-ADAD-34486AC9B85E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B1B2AAC-280D-443C-ADAD-34486AC9B85E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACC94444-4FCE-44F1-9C99-319DCA836850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACC94444-4FCE-44F1-9C99-319DCA836850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACC94444-4FCE-44F1-9C99-319DCA836850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACC94444-4FCE-44F1-9C99-319DCA836850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93FF4566-E47F-432C-AE2D-74118233F46E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93FF4566-E47F-432C-AE2D-74118233F46E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93FF4566-E47F-432C-AE2D-74118233F46E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93FF4566-E47F-432C-AE2D-74118233F46E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AFB2240-8823-4AF4-BB70-64419DA9DF7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AFB2240-8823-4AF4-BB70-64419DA9DF7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AFB2240-8823-4AF4-BB70-64419DA9DF7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AFB2240-8823-4AF4-BB70-64419DA9DF7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D4B563D-1E50-4FD9-9A4C-4B2A414BB557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D4B563D-1E50-4FD9-9A4C-4B2A414BB557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D4B563D-1E50-4FD9-9A4C-4B2A414BB557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D4B563D-1E50-4FD9-9A4C-4B2A414BB557}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0B1B2AAC-280D-443C-ADAD-34486AC9B85E} = {16E998F6-2A93-497F-8D1E-9AFB525CAB25}
+		{ACC94444-4FCE-44F1-9C99-319DCA836850} = {81504DF4-2DC1-4212-A5CC-F4BB73C6CDE4}
+		{93FF4566-E47F-432C-AE2D-74118233F46E} = {81504DF4-2DC1-4212-A5CC-F4BB73C6CDE4}
+		{4AFB2240-8823-4AF4-BB70-64419DA9DF7A} = {74ABD0D6-918C-4AFF-B012-F3E2999F303F}
+		{0D4B563D-1E50-4FD9-9A4C-4B2A414BB557} = {860AEA01-D714-45C0-B074-293F27632E63}
+	EndGlobalSection
+EndGlobal

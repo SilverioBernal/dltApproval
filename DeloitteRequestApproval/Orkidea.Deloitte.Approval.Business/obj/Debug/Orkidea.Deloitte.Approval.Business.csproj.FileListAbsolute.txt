@@ -1,0 +1,17 @@
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Debug\Orkidea.Deloitte.Approval.Business.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Debug\Orkidea.Deloitte.Approval.Business.pdb
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\obj\Debug\Orkidea.Deloitte.Approval.Business.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\obj\Debug\Orkidea.Deloitte.Approval.Business.pdb
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\obj\Debug\Orkidea.Deloitte.Approval.Business.csprojResolveAssemblyReference.cache
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Debug\Orkidea.Deloitte.Approval.DAL.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Debug\Orkidea.Deloitte.Approval.Entities.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Debug\Orkidea.Framework.Data.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Debug\Orkidea.Framework.Security.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Debug\EntityFramework.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Debug\Orkidea.Deloitte.Approval.DAL.pdb
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Debug\Orkidea.Deloitte.Approval.Entities.pdb
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Debug\Orkidea.Framework.Data.pdb
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Debug\Orkidea.Framework.Security.pdb
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Debug\EntityFramework.xml
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Debug\Orkidea.Framework.Messaging.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Debug\Orkidea.Framework.Messaging.pdb

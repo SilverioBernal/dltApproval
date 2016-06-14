@@ -1,0 +1,61 @@
+﻿@model Orkidea.Deloitte.Approval.Entities.WebUser
+@{
+    ViewBag.Title = "Editar usuario";
+}
+<script src="~/Scripts/Custom/WebUserEdit.js"></script>
+<div class="ork-Content">
+    @using (Html.BeginForm("Edit", "webuser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <h2>Editar usuario</h2>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.name, "Nombre", new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.name, new { @class = "form-control required", readOnly = "true" })                    
+                    <input type="text" value="@Model.idRol" id="rol" style="display:none;" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.idPais, "País", new { @class = "control-label" }) <small>ej. CO, AR o LA para LATCO</small>
+                    @Html.TextBoxFor(m => m.idPais, new { @class = "form-control required", maxlength = "2" })
+                    @Html.ValidationMessageFor(m => m.idPais, "Requerido", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.idRol, "Rol", new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model.idRol, new SelectList(Enumerable.Empty<SelectListItem>()), " ", new { @class = "form-control", style = "max-width:50%" })
+                    @Html.ValidationMessageFor(m => m.idRol, "Requerido", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.active) Activo
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type='submit' id='upload-files' value=' Siguiente ' class="btn btn-info" />
+                    | @Html.ActionLink("Volver a la lista", "Index", "WebUser")
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

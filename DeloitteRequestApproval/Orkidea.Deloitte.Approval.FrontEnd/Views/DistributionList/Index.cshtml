@@ -1,0 +1,46 @@
+﻿@model IEnumerable<@Orkidea.Deloitte.Approval.Entities.DistributionList>
+@{
+    ViewBag.Title = "Listas de distribución";
+}
+<script src="~/Scripts/Custom/DistributionListIndex.js"></script>
+<div class="ork-Content">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Listas de distribución</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.ActionLink("Crear nuevo", "Create", null, new { @class = "btn btn-info" }) | @Html.ActionLink("Volver al home", "Index", "Home")
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <table id="distributionList" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>E-mail</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.name</td>
+                            <td>@Html.Raw(item.email)</td>
+                            <td>
+                                <a href="@Url.Action("Edit", new { id = item.id })" class="sepV_a" title="Editar"><i class="fa fa-pencil"></i></a>
+                                <span> | </span>
+                                <a href="@Url.Action("Delete", new { id = item.id })" title="Eliminar"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

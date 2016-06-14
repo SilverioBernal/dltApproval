@@ -1,0 +1,44 @@
+﻿@model Orkidea.Deloitte.Approval.Entities.ApprovalRequest
+
+@{
+    ViewBag.Title = "Crear solicitud de aprobación";
+}
+
+<script src="~/Scripts/Custom/ApprovalCreate.js"></script>
+
+<div class="ork-Content">
+    @using (Html.BeginForm("create", "Approval", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <h2>Crear solicitud de aprobación</h2>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.request, "Solicitud", new { @class = "control-label" })
+                    @Html.TextAreaFor(m => m.request, new { @class = "form-control required", title = "Contenido del requerimiento", rows = 7, style = "max-width:100%;" })                    
+                    @Html.ValidationMessageFor(m => m.request, "Requerido", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group" >
+                    @Html.LabelFor(model => model.idDistributionList, "Enviar a:", new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model.idDistributionList, new SelectList(Enumerable.Empty<SelectListItem>()), " ", new { @class = "form-control", style = "max-width:50%" })
+                    @Html.ValidationMessageFor(m => m.idDistributionList, "Requerido", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type='submit' id='upload-files' value=' Siguiente ' class="btn btn-info" />
+                    | @Html.ActionLink("Volver al inicio", "Index", "Home")
+                </div>
+            </div>
+        </div>
+    }
+</div>

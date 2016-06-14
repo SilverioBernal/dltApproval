@@ -1,0 +1,10 @@
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Entities\bin\Debug\Orkidea.Deloitte.Approval.Entities.dll.config
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Entities\bin\Debug\Orkidea.Deloitte.Approval.Entities.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Entities\bin\Debug\Orkidea.Deloitte.Approval.Entities.pdb
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Entities\bin\Debug\EntityFramework.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Entities\bin\Debug\EntityFramework.xml
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Entities\obj\Debug\Orkidea.Deloitte.Approval.Entities.csprojResolveAssemblyReference.cache
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Entities\obj\Debug\Orkidea.Deloitte.Approval.Entities.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Entities\obj\Debug\Orkidea.Deloitte.Approval.Entities.pdb

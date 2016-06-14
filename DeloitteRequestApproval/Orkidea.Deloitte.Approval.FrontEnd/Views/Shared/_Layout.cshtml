@@ -1,0 +1,371 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Deloitte</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.5/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker3.css" />
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/locales/bootstrap-datepicker.es.min.js"></script>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                @*<a href="@Url.Action("Index","Home")"><img alt="Logo" class="logo" src="@Url.Content("~/Assets/images/deloitte.png")" /></a>*@
+                <div class="logo">
+                    <a href="@Url.Action("Index","Home")" class="deloitte-logo" title="Deloitte Colombia">
+                        <span class="logo-deloitte">&nbsp;</span>
+                    </a>
+                    <div class="annotations"></div>
+                </div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">                                        
+                    <li>@Html.ActionLink("Listas de distribucion", "index", "distributionList")</li>
+                    <li>@Html.ActionLink("Usuarios", "index", "webUser")</li>
+                </ul>
+                @*@Html.Partial("_LoginPartial")*@
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="javascript:void(0);">@User.Identity.GetUserName()</a></li>
+                    <li><a href="@Url.Action("LogOut", "Security")">Cerrar sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        <div class="ork-Wrap">
+            @RenderBody()
+        </div>  
+    </div>   
+    <footer id="footer-section" style="top: 78px;">
+        <div class="footer-wrapper">
+            @*<div class="footer-container" role="navigation">
+                <div class="footerlinks">
+                    <div id="footer-col1" class="footer-column first">
+                        <p class="tertiary-headline">Contacto</p>
+                        <ul class="footer-col">
+                            <li>
+                                <a href="/co/es.html?icid=bottom_globalprofileoffices">
+                                    Home
+                                </a>
+                            </li>
+
+
+
+                            <li>
+                                <a href="/co/es/footerlinks/newsroom.html?icid=bottom_newsroom">
+                                    Sala de Prensa
+                                </a>
+                            </li>
+
+
+
+                            <li>
+                                <a href="/co/es/footerlinks/office-locator.html?icid=bottom_office-locator">
+                                    Nuestras Oficinas en Colombia
+                                </a>
+                            </li>
+
+
+
+                            <li>
+                                <a href="/co/es/footerlinks/global-office-directory.html?icid=bottom_global-office-directory">
+                                    Nuestras Oficinas en el mundo
+                                </a>
+                            </li>
+
+
+
+                            <li>
+                                <a href="/co/es/footerlinks/submit-rfp.html?icid=bottom_submit-rfp">
+                                    Solicitudes de Cotización
+                                </a>
+                            </li>
+
+
+
+                            <li>
+                                <a href="/co/es/footerlinks/contact-us.html?icid=bottom_contact-us" class="contact-us">
+                                    Contáctenos
+                                </a>
+                            </li>
+
+
+
+                        </ul>
+                    </div>
+                    <div class="sitemap">
+                        <div id="footer-col2" class="footer-column">
+                            <p class="tertiary-headline">
+                                Servicios
+                            </p>
+                            <ul class="footer-col">
+                                <li>
+                                    <a href="/co/es/services/audit.html?icid=bottom_audit">
+                                        Auditoría
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/services/bps-business-process-solutions.html?icid=bottom_bps-business-process-solutions">
+                                        BPS - Business Process Solutions
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/services/human-capital.html?icid=bottom_human-capital">
+                                        Gestión Humana
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/services/educacion-desarrollo-profesional.html?icid=bottom_educacion-desarrollo-profesional">
+                                        Educación y Desarrollo Profesional
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/services/strategy.html?icid=bottom_strategy">
+                                        Estrategia
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/services/finance.html?icid=bottom_finance">
+                                        Finanzas
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/services/tax.html?icid=bottom_tax">
+                                        Impuestos
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/services/legal.html?icid=bottom_legal">
+                                        Legal
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/services/operations.html?icid=bottom_operations">
+                                        Operaciones
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/services/risk.html?icid=bottom_risk">
+                                        Riesgo
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/services/technology.html?icid=bottom_technology">
+                                        Tecnología
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/services/consultoria.html?icid=bottom_consultoria">
+                                        Consultoría
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/services/ifrs_niif.html?icid=bottom_ifrs_niif">
+                                        NIIF | IFRS
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="footer-col3" class="footer-column">
+                            <p class="tertiary-headline">
+                                Industrias
+                            </p>
+                            <ul class="footer-col">
+                                <li>
+                                    <a href="/co/es/industries/consumer-business.html?icid=bottom_consumer-business">
+                                        Consumo Masivo
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/industries/energy-and-resources.html?icid=bottom_energy-and-resources">
+                                        Energía y Recursos
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/industries/financial-services.html?icid=bottom_financial-services">
+                                        Servicios Financieros
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/industries/life-sciences-and-healthcare.html?icid=bottom_life-sciences-and-healthcare">
+                                        Ciencias de la Vida y Cuidado de la Salud
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/industries/manufacturing.html?icid=bottom_manufacturing">
+                                        Manufactura
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/industries/public-sector.html?icid=bottom_public-sector">
+                                        Sector Público
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/industries/real-estate.html?icid=bottom_real-estate">
+                                        Real Estate
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/industries/technology-media-and-telecommunications.html?icid=bottom_technology-media-and-telecommunications">
+                                        Tecnología, Medios y Telecomunicaciones
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="footer-col4" class="footer-column">
+                            <p class="tertiary-headline">
+                                Trabaje en Deloitte
+                            </p>
+                            <ul class="footer-col">
+                                <li>
+                                    <a href="http://careers.deloitte.com/jobs/spa-co?icid=bottom_job-search" target="_blank">
+                                        Búsqueda de Oportunidades Laborales
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/careers/experienced-hires.html?icid=bottom_experienced-hires">
+                                        Candidatos con Experiencia
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/careers/students.html?icid=bottom_students">
+                                        Estudiantes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/co/es/careers/life-at-deloitte.html?icid=bottom_life-at-deloitte">
+                                        Tu vida en Deloitte
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="footer-col5" class="footer-column">
+                        <p class="tertiary-headline">Legal</p>
+                        <ul class="footer-col">
+                            <li>
+                                <a href="/co/es/pages/about-deloitte/articles/about-deloitte.html?icid=bottom_acercadedeloitte">
+                                    Acerca de Deloitte
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/co/es/legal/legal.html?icid=bottom_legal">
+                                    Términos de Uso
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/co/es/legal/privacy.html?icid=bottom_privacy">
+                                    Aviso de Privacidad
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/co/es/legal/cookies.html?icid=bottom_cookies">
+                                    Cookies
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/co/es/legal/politica-privacidad.html?icid=bottom_politica-privacidad">
+                                    Política de Privacidad
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/co/es/legal/codigoetica.html?icid=bottom_codigoetica">
+                                    Código de Ética y Conducta
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/co/es/legal/formularioconfirmacionhabeas.html?icid=bottom_formularioconfirmacionhabeas">
+                                    Formulario Confirmación Política Tratamiento de Datos Personales
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/co/es/legal/Manual_SAGRLAFT_Deloitte.html?icid=bottom_Manual_SAGRLAFT_Deloitte">
+                                    Manual SAGRLAFT
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/co/es/legal/confirmacion-de-datos-personales.html?icid=bottom_confirmacion-de-datos-personales">
+                                    Autorización Ingreso a Base de Datos | Deloitte Colombia
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            var href = encodeURI($('.press').attr('href'));
+                            var decodedNews = $('<div />').html('Noticias').text();
+                            var decodedPress = $('<div />').html('Comunicados de prensa').text();
+
+
+                            /**var queryToAppend = '&sp_q_18="'+decodedNews+'"+"'+decodedPress+'"'; */
+                            var queryToAppend = '&sp_q_18="' + decodedPress + '"';
+
+                            queryToAppend = encodeURI(queryToAppend);
+                            href = href + queryToAppend;
+                            $('.press').attr('href', href);
+
+                        })
+
+                    </script>
+                </div>
+                <div class="clear"></div>
+            </div>*@
+            <div id="footer-disclaimer" class="disclaimer-text" role="contentinfo">
+                <p style="font-family: tahoma , arial , helvetica , sans-serif;font-size: 12.0px;"><span class="small-body-copy">© 2015. Vea los <a href="/co/es/legal/legal.html">Términos de Uso</a> para más información</span></p>
+
+                <p style="font-family: tahoma , arial , helvetica , sans-serif;font-size: 12.0px;"><span class="small-body-copy">Deloitte se refiere a Deloitte Touche Tohmatsu Limited, sociedad privada limitada por garantía en el Reino Unido (“DTTL”), y a su red de firmas miembro, cada una de ellas como una entidad legal única e independiente. DTTL (conocido también como “Deloitte Global”) no provee servicios a clientes.&nbsp;Conozca en <a href="/co/es/legal/acercadedeloitte.html">Acerca de Deloitte</a> la descripción detallada de la estructura legal de Deloitte Touche Tohmatsu Limited y sus firmas miembro.</span></p>
+
+
+
+            </div>
+            <div class="social-tab">
+                <div id="footer-social" class="social-media-links">
+                    <ul>
+
+                        <li> <a href="https://www.facebook.com/DeloitteColombia" title="Deloitte Colombia"><i class="fa fa-facebook"></i></a></li>
+
+
+
+
+                        <li><a href="https://twitter.com/DeloitteCO" title="Deloitte Colombia"><i class="fa fa-twitter"></i></a></li>
+
+
+
+
+                        <li><a href="https://www.youtube.com/channel/UC76egPKLXLJNYZlqI96d22A" title="Deloitte Colombia"><i class="fa fa-youtube"></i></a></li>
+
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

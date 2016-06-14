@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Orkidea.Deloitte.Approval.FrontEnd.Models.vmWebUser>
+
+@{
+    ViewBag.Title = "Usuarios";
+}
+<script src="~/Scripts/Custom/WebUserIndex.js"></script>
+<div class="ork-Content">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Usuarios</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.ActionLink("Crear nuevo", "Create", null, new { @class = "btn btn-info" }) | @Html.ActionLink("Volver al home", "Index", "Home")
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <table id="webUsers" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Rol</th>
+                        <th>País</th>
+                        <th>Estado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.name</td>
+                            <td>@item.idRol</td>
+                            <td>@item.idPais</td>
+                            <td>@item.status</td>
+                            <td>
+                                <a href="@Url.Action("Edit", new { id = item.id })" class="sepV_a" title="Editar"><i class="fa fa-pencil"></i></a>
+                                <span> | </span>
+                                <a href="@Url.Action("Delete", new { id = item.id })" title="Eliminar"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

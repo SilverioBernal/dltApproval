@@ -1,0 +1,20 @@
+﻿@model Orkidea.Deloitte.Approval.Entities.ApprovalRequest
+@{
+    ViewBag.Title = "Reject";
+    Layout = null;
+}
+
+@using (Html.BeginForm("Reject", "Approval", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <label class="control-label">Comentarios</label>
+                @Html.TextAreaFor(m => m.comments, new { @class = "form-control required", title = "Comentarios", rows = 7, style = "max-width:100%;" })
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input type="submit" class="btn btn-danger" value="Terminar">
+    </div>
+}

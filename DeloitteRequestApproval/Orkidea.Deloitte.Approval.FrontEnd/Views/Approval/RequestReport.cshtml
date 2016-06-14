@@ -1,0 +1,197 @@
+﻿@{
+    ViewBag.Title = "RequestReport";
+}
+
+<div class="ork-Content">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Reporte requerimientos</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Desde</label>
+                <div class="input-group date dtPicker" id="datetimepicker1">
+                    <input type="text" class="form-control" id="start" style="max-width:100%" />
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Hasta</label>
+                <div class="input-group date dtPicker" id="datetimepicker1">
+                    <input type="text" class="form-control" id="end" style="max-width:100%" />
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label" style="color:white">.</label>
+                <input type="button" value="Buscar" id="btnSearch" class="btn btn-info" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label" style="color:white">.</label>
+                <input type="button" value="Exportar" id="btnExport" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table id="requests" class="display" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Fecha</th>
+                        <th>Solicitante</th>
+                        <th>Asignada</th>
+                        <th>Solicitud</th>
+                        <th>estado</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.dtPicker').datepicker({
+            format: "yyyy-mm-dd",
+            todayBtn: "linked",
+            language: "es",
+            orientation: "bootom auto",
+            autoclose: true,
+            todayHighlight: true,
+            toggleActive: true
+        });
+
+        var fisrtDay = new Date();
+        var today = new Date();
+
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        firstDay = yyyy + '-' + mm + '-01';
+        today = yyyy + '-' + mm + '-' + dd ;
+
+
+        $("#start").val(firstDay);
+        $("#end").val(today);
+
+
+        InitOverviewDataTable();
+
+        $("#btnSearch").click(function () {
+            RefreshTable();
+        });
+
+        $("#btnExport").click(function () {
+            ExportData();
+        });
+
+        function InitOverviewDataTable() {
+            var from, to;
+
+            from = $("#start").val();
+            to = $("#end").val();
+
+            var url = "../Approval/AsyncRequestReport/" + from + "|" + to;
+
+            oOverviewTable = $('#requests').dataTable({
+                //processing: true,
+                "ajax": url,                
+                "language": {
+                    //"processing": "Hang on. Waiting for response...",
+                    "lengthMenu": "Mostrar _MENU_ registros por pagina",
+                    //"zeroRecords": "Ningun resultado encontrado",
+                    "sLoadingRecords": "Obteniendo los clientes, espere un momento...",
+                    "info": "Página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Sin registros",
+                    "infoFiltered": "(filtered from _MAX_ total records)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "first": "Primera",
+                        "last": "Ultima",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    },
+                }
+            });
+        }
+
+
+        function RefreshTable() {
+            from = $("#start").val();
+            to = $("#end").val();
+
+            var tableId = '#requests';
+            var urlData = "../Approval/AsyncRequestReport/" + from + "|" + to;
+            
+            $.getJSON(urlData, null, function (json) {
+                table = $(tableId).dataTable();
+                oSettings = table.fnSettings();
+                table.fnClearTable(this);
+
+                for (var i = 0; i < json.data.length; i++) {
+                    table.oApi._fnAddData(oSettings, json.data[i]);
+                }
+
+                oSettings.aiDisplay = oSettings.aiDisplayMaster.slice();
+                table.fnDraw();
+            });
+        }
+
+        function RefreshTable() {
+            from = $("#start").val();
+            to = $("#end").val();
+
+            var tableId = '#requests';
+            var urlData = "../Approval/AsyncRequestReport/" + from + "|" + to;
+            
+            $.getJSON(urlData, null, function (json) {
+                table = $(tableId).dataTable();
+                oSettings = table.fnSettings();
+                table.fnClearTable(this);
+
+                for (var i = 0; i < json.data.length; i++) {
+                    table.oApi._fnAddData(oSettings, json.data[i]);
+                }
+
+                oSettings.aiDisplay = oSettings.aiDisplayMaster.slice();
+                table.fnDraw();
+            });
+        }
+
+        function ExportData() {
+
+            from = $("#start").val();
+            to = $("#end").val();
+
+            var tableId = '#requests';
+            var urlData = "../Approval/AsyncRequestReportXls/" + from + "|" + to;
+
+            window.location = urlData;
+        }
+
+    });
+</script>

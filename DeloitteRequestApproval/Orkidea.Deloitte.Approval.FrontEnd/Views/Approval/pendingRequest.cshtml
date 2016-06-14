@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Orkidea.Deloitte.Approval.FrontEnd.Models.vmApprovalRequest>
+@{
+    ViewBag.Title = "Solicitudes pendientes";
+    Layout = null;
+}
+
+<script src="~/Scripts/Custom/ApprovalPendingRequest.js"></script>
+
+<div class="ork-Content">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Solicitudes pendientes de aprobación</h2>
+        </div>
+    </div>    
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <table id="pending" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Solicitado</th>
+                        <th>Usuario</th>
+                        <th>Asignado</th>
+                        <th>Requerimiento</th>
+                        @*<th>Estado</th>*@
+                        @*<th>Respondido</th>*@
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.dateRequest.ToString("yyyy-MM-dd")</td>
+                            <td>@item.requestUser</td>
+                            <td>@item.distributionListName</td>
+                            <td>@item.request</td>
+                            @*<td>@item.approvalStatus</td>*@
+                            @*<td>@item.dateApprovalString</td>*@
+                            <td>
+                                <a href="@Url.Action("Details", new { id = item.cipherId })" class="btn btn-info" title="Ver"><i class="fa fa-search"></i> Ver</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

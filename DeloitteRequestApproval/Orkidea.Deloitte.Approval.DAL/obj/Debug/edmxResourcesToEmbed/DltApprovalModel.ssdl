@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dltApprovalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ApprovalRequest">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dateRequest" Type="datetime" Nullable="false" />
+    <Property Name="requestUser" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="idDistributionList" Type="int" Nullable="false" />
+    <Property Name="request" Type="varchar(max)" Nullable="false" />
+    <Property Name="approved" Type="bit" />
+    <Property Name="dateApproval" Type="datetime" />
+    <Property Name="approvalUser" Type="varchar" MaxLength="500" />
+    <Property Name="comments" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="DistributionList">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="email" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WebUser">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="idRol" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="idPais" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dltApproval.dbo.vwRequestReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwRequestReport">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="dateRequest" />
+      <PropertyRef Name="requestUser" />
+      <PropertyRef Name="idDistributionList" />
+      <PropertyRef Name="distributionListName" />
+      <PropertyRef Name="request" />
+      <PropertyRef Name="idPais" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="dateRequest" Type="datetime" Nullable="false" />
+    <Property Name="requestUser" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="idDistributionList" Type="int" Nullable="false" />
+    <Property Name="distributionListName" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="request" Type="varchar(max)" Nullable="false" />
+    <Property Name="approved" Type="bit" />
+    <Property Name="dateApproval" Type="datetime" />
+    <Property Name="approvalUser" Type="varchar" MaxLength="500" />
+    <Property Name="comments" Type="varchar(max)" />
+    <Property Name="idPais" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ApprovalRequest_DistributionList">
+    <End Role="DistributionList" Type="Self.DistributionList" Multiplicity="1" />
+    <End Role="ApprovalRequest" Type="Self.ApprovalRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DistributionList">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ApprovalRequest">
+        <PropertyRef Name="idDistributionList" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApprovalRequest_WebUser">
+    <End Role="WebUser" Type="Self.WebUser" Multiplicity="1" />
+    <End Role="ApprovalRequest" Type="Self.ApprovalRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WebUser">
+        <PropertyRef Name="name" />
+      </Principal>
+      <Dependent Role="ApprovalRequest">
+        <PropertyRef Name="requestUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApprovalRequest_WebUser1">
+    <End Role="WebUser" Type="Self.WebUser" Multiplicity="0..1" />
+    <End Role="ApprovalRequest" Type="Self.ApprovalRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WebUser">
+        <PropertyRef Name="name" />
+      </Principal>
+      <Dependent Role="ApprovalRequest">
+        <PropertyRef Name="approvalUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dltApprovalModelStoreContainer">
+    <EntitySet Name="ApprovalRequest" EntityType="Self.ApprovalRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DistributionList" EntityType="Self.DistributionList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WebUser" EntityType="Self.WebUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vwRequestReport" EntityType="Self.vwRequestReport" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwRequestReport].[id] AS [id], 
+    [vwRequestReport].[dateRequest] AS [dateRequest], 
+    [vwRequestReport].[requestUser] AS [requestUser], 
+    [vwRequestReport].[idDistributionList] AS [idDistributionList], 
+    [vwRequestReport].[distributionListName] AS [distributionListName], 
+    [vwRequestReport].[request] AS [request], 
+    [vwRequestReport].[approved] AS [approved], 
+    [vwRequestReport].[dateApproval] AS [dateApproval], 
+    [vwRequestReport].[approvalUser] AS [approvalUser], 
+    [vwRequestReport].[comments] AS [comments], 
+    [vwRequestReport].[idPais] AS [idPais]
+    FROM [dbo].[vwRequestReport] AS [vwRequestReport]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_ApprovalRequest_DistributionList" Association="Self.FK_ApprovalRequest_DistributionList">
+      <End Role="DistributionList" EntitySet="DistributionList" />
+      <End Role="ApprovalRequest" EntitySet="ApprovalRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApprovalRequest_WebUser" Association="Self.FK_ApprovalRequest_WebUser">
+      <End Role="WebUser" EntitySet="WebUser" />
+      <End Role="ApprovalRequest" EntitySet="ApprovalRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApprovalRequest_WebUser1" Association="Self.FK_ApprovalRequest_WebUser1">
+      <End Role="WebUser" EntitySet="WebUser" />
+      <End Role="ApprovalRequest" EntitySet="ApprovalRequest" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

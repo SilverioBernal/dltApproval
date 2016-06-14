@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dltApprovalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApprovalRequest">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dateRequest" Type="datetime" Nullable="false" />
+          <Property Name="requestUser" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="idDistributionList" Type="int" Nullable="false" />
+          <Property Name="request" Type="varchar(max)" Nullable="false" />
+          <Property Name="approved" Type="bit" />
+          <Property Name="dateApproval" Type="datetime" />
+          <Property Name="approvalUser" Type="varchar" MaxLength="500" />
+          <Property Name="comments" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="DistributionList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="email" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WebUser">
+          <Key>
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+          <Property Name="idRol" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="idPais" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dltApproval.dbo.vwRequestReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwRequestReport">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="dateRequest" />
+            <PropertyRef Name="requestUser" />
+            <PropertyRef Name="idDistributionList" />
+            <PropertyRef Name="distributionListName" />
+            <PropertyRef Name="request" />
+            <PropertyRef Name="idPais" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="dateRequest" Type="datetime" Nullable="false" />
+          <Property Name="requestUser" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="idDistributionList" Type="int" Nullable="false" />
+          <Property Name="distributionListName" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="request" Type="varchar(max)" Nullable="false" />
+          <Property Name="approved" Type="bit" />
+          <Property Name="dateApproval" Type="datetime" />
+          <Property Name="approvalUser" Type="varchar" MaxLength="500" />
+          <Property Name="comments" Type="varchar(max)" />
+          <Property Name="idPais" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ApprovalRequest_DistributionList">
+          <End Role="DistributionList" Type="Self.DistributionList" Multiplicity="1" />
+          <End Role="ApprovalRequest" Type="Self.ApprovalRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DistributionList">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ApprovalRequest">
+              <PropertyRef Name="idDistributionList" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApprovalRequest_WebUser">
+          <End Role="WebUser" Type="Self.WebUser" Multiplicity="1" />
+          <End Role="ApprovalRequest" Type="Self.ApprovalRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebUser">
+              <PropertyRef Name="name" />
+            </Principal>
+            <Dependent Role="ApprovalRequest">
+              <PropertyRef Name="requestUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApprovalRequest_WebUser1">
+          <End Role="WebUser" Type="Self.WebUser" Multiplicity="0..1" />
+          <End Role="ApprovalRequest" Type="Self.ApprovalRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebUser">
+              <PropertyRef Name="name" />
+            </Principal>
+            <Dependent Role="ApprovalRequest">
+              <PropertyRef Name="approvalUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dltApprovalModelStoreContainer">
+          <EntitySet Name="ApprovalRequest" EntityType="Self.ApprovalRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DistributionList" EntityType="Self.DistributionList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebUser" EntityType="Self.WebUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwRequestReport" EntityType="Self.vwRequestReport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwRequestReport].[id] AS [id], 
+    [vwRequestReport].[dateRequest] AS [dateRequest], 
+    [vwRequestReport].[requestUser] AS [requestUser], 
+    [vwRequestReport].[idDistributionList] AS [idDistributionList], 
+    [vwRequestReport].[distributionListName] AS [distributionListName], 
+    [vwRequestReport].[request] AS [request], 
+    [vwRequestReport].[approved] AS [approved], 
+    [vwRequestReport].[dateApproval] AS [dateApproval], 
+    [vwRequestReport].[approvalUser] AS [approvalUser], 
+    [vwRequestReport].[comments] AS [comments], 
+    [vwRequestReport].[idPais] AS [idPais]
+    FROM [dbo].[vwRequestReport] AS [vwRequestReport]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ApprovalRequest_DistributionList" Association="Self.FK_ApprovalRequest_DistributionList">
+            <End Role="DistributionList" EntitySet="DistributionList" />
+            <End Role="ApprovalRequest" EntitySet="ApprovalRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApprovalRequest_WebUser" Association="Self.FK_ApprovalRequest_WebUser">
+            <End Role="WebUser" EntitySet="WebUser" />
+            <End Role="ApprovalRequest" EntitySet="ApprovalRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApprovalRequest_WebUser1" Association="Self.FK_ApprovalRequest_WebUser1">
+            <End Role="WebUser" EntitySet="WebUser" />
+            <End Role="ApprovalRequest" EntitySet="ApprovalRequest" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dltApprovalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="dltApprovalEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="DistributionList" EntityType="dltApprovalModel.DistributionList" />
+          <EntitySet Name="ApprovalRequest" EntityType="dltApprovalModel.ApprovalRequest" />
+          <AssociationSet Name="FK_ApprovalRequest_DistributionList" Association="dltApprovalModel.FK_ApprovalRequest_DistributionList">
+            <End Role="DistributionList" EntitySet="DistributionList" />
+            <End Role="ApprovalRequest" EntitySet="ApprovalRequest" />
+          </AssociationSet>
+          <EntitySet Name="WebUser" EntityType="dltApprovalModel.WebUser" />
+          <AssociationSet Name="FK_ApprovalRequest_WebUser" Association="dltApprovalModel.FK_ApprovalRequest_WebUser">
+            <End Role="WebUser" EntitySet="WebUser" />
+            <End Role="ApprovalRequest" EntitySet="ApprovalRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApprovalRequest_WebUser1" Association="dltApprovalModel.FK_ApprovalRequest_WebUser1">
+            <End Role="WebUser" EntitySet="WebUser" />
+            <End Role="ApprovalRequest" EntitySet="ApprovalRequest" />
+          </AssociationSet>
+          <EntitySet Name="vwRequestReport" EntityType="dltApprovalModel.vwRequestReport" />
+          </EntityContainer>
+        <EntityType Name="DistributionList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ApprovalRequest" Relationship="dltApprovalModel.FK_ApprovalRequest_DistributionList" FromRole="DistributionList" ToRole="ApprovalRequest" />
+        </EntityType>
+        <EntityType Name="ApprovalRequest">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateRequest" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="requestUser" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="idDistributionList" Type="Int32" Nullable="false" />
+          <Property Name="request" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="approved" Type="Boolean" />
+          <Property Name="dateApproval" Type="DateTime" Precision="3" />
+          <Property Name="approvalUser" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DistributionList" Relationship="dltApprovalModel.FK_ApprovalRequest_DistributionList" FromRole="ApprovalRequest" ToRole="DistributionList" />
+          <NavigationProperty Name="WebUser" Relationship="dltApprovalModel.FK_ApprovalRequest_WebUser" FromRole="ApprovalRequest" ToRole="WebUser" />
+          <NavigationProperty Name="WebUser1" Relationship="dltApprovalModel.FK_ApprovalRequest_WebUser1" FromRole="ApprovalRequest" ToRole="WebUser" />
+          </EntityType>
+        <Association Name="FK_ApprovalRequest_DistributionList">
+          <End Type="dltApprovalModel.DistributionList" Role="DistributionList" Multiplicity="1" />
+          <End Type="dltApprovalModel.ApprovalRequest" Role="ApprovalRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DistributionList">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ApprovalRequest">
+              <PropertyRef Name="idDistributionList" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WebUser">
+          <Key>
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="idRol" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="idPais" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ApprovalRequest" Relationship="dltApprovalModel.FK_ApprovalRequest_WebUser" FromRole="WebUser" ToRole="ApprovalRequest" />
+          <NavigationProperty Name="ApprovalRequest1" Relationship="dltApprovalModel.FK_ApprovalRequest_WebUser1" FromRole="WebUser" ToRole="ApprovalRequest" />
+        </EntityType>
+        <Association Name="FK_ApprovalRequest_WebUser">
+          <End Type="dltApprovalModel.WebUser" Role="WebUser" Multiplicity="1" />
+          <End Type="dltApprovalModel.ApprovalRequest" Role="ApprovalRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebUser">
+              <PropertyRef Name="name" />
+            </Principal>
+            <Dependent Role="ApprovalRequest">
+              <PropertyRef Name="requestUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApprovalRequest_WebUser1">
+          <End Type="dltApprovalModel.WebUser" Role="WebUser" Multiplicity="0..1" />
+          <End Type="dltApprovalModel.ApprovalRequest" Role="ApprovalRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebUser">
+              <PropertyRef Name="name" />
+            </Principal>
+            <Dependent Role="ApprovalRequest">
+              <PropertyRef Name="approvalUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vwRequestReport">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="dateRequest" />
+            <PropertyRef Name="requestUser" />
+            <PropertyRef Name="idDistributionList" />
+            <PropertyRef Name="distributionListName" />
+            <PropertyRef Name="request" />
+            <PropertyRef Name="idPais" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="dateRequest" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="requestUser" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="idDistributionList" Type="Int32" Nullable="false" />
+          <Property Name="distributionListName" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="request" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="approved" Type="Boolean" />
+          <Property Name="dateApproval" Type="DateTime" Precision="3" />
+          <Property Name="approvalUser" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idPais" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dltApprovalModelStoreContainer" CdmEntityContainer="dltApprovalEntities" >
+          <EntitySetMapping Name="DistributionList">
+            <EntityTypeMapping TypeName="dltApprovalModel.DistributionList">
+              <MappingFragment StoreEntitySet="DistributionList">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApprovalRequest">
+            <EntityTypeMapping TypeName="dltApprovalModel.ApprovalRequest">
+              <MappingFragment StoreEntitySet="ApprovalRequest">
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="approvalUser" ColumnName="approvalUser" />
+                <ScalarProperty Name="dateApproval" ColumnName="dateApproval" />
+                <ScalarProperty Name="approved" ColumnName="approved" />
+                <ScalarProperty Name="request" ColumnName="request" />
+                <ScalarProperty Name="idDistributionList" ColumnName="idDistributionList" />
+                <ScalarProperty Name="requestUser" ColumnName="requestUser" />
+                <ScalarProperty Name="dateRequest" ColumnName="dateRequest" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebUser">
+            <EntityTypeMapping TypeName="dltApprovalModel.WebUser">
+              <MappingFragment StoreEntitySet="WebUser">
+                <ScalarProperty Name="idPais" ColumnName="idPais" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwRequestReport">
+            <EntityTypeMapping TypeName="dltApprovalModel.vwRequestReport">
+              <MappingFragment StoreEntitySet="vwRequestReport">
+                <ScalarProperty Name="idPais" ColumnName="idPais" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="approvalUser" ColumnName="approvalUser" />
+                <ScalarProperty Name="dateApproval" ColumnName="dateApproval" />
+                <ScalarProperty Name="approved" ColumnName="approved" />
+                <ScalarProperty Name="request" ColumnName="request" />
+                <ScalarProperty Name="distributionListName" ColumnName="distributionListName" />
+                <ScalarProperty Name="idDistributionList" ColumnName="idDistributionList" />
+                <ScalarProperty Name="requestUser" ColumnName="requestUser" />
+                <ScalarProperty Name="dateRequest" ColumnName="dateRequest" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

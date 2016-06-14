@@ -1,0 +1,6 @@
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\BatchNotification\obj\Debug\BatchNotification.csprojResolveAssemblyReference.cache
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\BatchNotification\bin\Debug\BatchNotification.exe.config
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\BatchNotification\bin\Debug\BatchNotification.exe
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\BatchNotification\bin\Debug\BatchNotification.pdb
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\BatchNotification\obj\Debug\BatchNotification.exe
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\BatchNotification\obj\Debug\BatchNotification.pdb

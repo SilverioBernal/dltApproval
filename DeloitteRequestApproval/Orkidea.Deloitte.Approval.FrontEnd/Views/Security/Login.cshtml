@@ -1,0 +1,52 @@
+﻿@model Orkidea.Deloitte.Approval.FrontEnd.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="ork-Home-Image">
+    <img src="~/Assets/images/Approval.jpg" class="img-responsive" width="100%" />
+</div>
+<div class="green-dots-container" style="opacity: 1; width: 100%;"></div>
+<div class="row">
+    <div class="col-md-7">
+        <div class="ork-Content">
+            <h2 class="secondary-headline">Gestión de aprobaciones</h2>
+            <p class="secondary-headline green-title">
+                Bienvenido! Con esta herramienta, usted podrá gestionar sus aprobaciones de forma sencilla y rapida. Ingrese su usuario y contraseña para acceder a la aplicación.
+            </p>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="ork-Content">
+            <h2 class="secondary-headline">Ingreso</h2>
+
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Security", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.Label("Usuario", new { @class = "col-md-4 control-label" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Contraseña", new { @class = "col-md-4 control-label" })
+                        <div class="col-md-8">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-10">
+                            <input type="submit" value="Iniciar sesión" class="btn btn-default" />
+                        </div>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+</div>
+
