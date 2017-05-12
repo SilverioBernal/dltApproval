@@ -1,0 +1,17 @@
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Release\Orkidea.Deloitte.Approval.Business.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Release\Orkidea.Deloitte.Approval.Business.pdb
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Release\Orkidea.Deloitte.Approval.DAL.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Release\Orkidea.Deloitte.Approval.Entities.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Release\Orkidea.Framework.Data.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Release\Orkidea.Framework.Messaging.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Release\Orkidea.Framework.Security.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Release\EntityFramework.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Release\Orkidea.Deloitte.Approval.DAL.pdb
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Release\Orkidea.Deloitte.Approval.Entities.pdb
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Release\Orkidea.Framework.Data.pdb
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Release\Orkidea.Framework.Messaging.pdb
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Release\Orkidea.Framework.Security.pdb
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\bin\Release\EntityFramework.xml
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\obj\Release\Orkidea.Deloitte.Approval.Business.csprojResolveAssemblyReference.cache
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\obj\Release\Orkidea.Deloitte.Approval.Business.dll
+C:\Users\Aguila1\Source\Repos\dltApproval\DeloitteRequestApproval\Orkidea.Deloitte.Approval.Business\obj\Release\Orkidea.Deloitte.Approval.Business.pdb
